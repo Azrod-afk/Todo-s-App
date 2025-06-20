@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "4FFD0E80-0AB8-441B-AC0E-B769370DED39",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Todo's App.xcodeproj",
+      "identifier" : "730D6D1F2E048123007E5BB4",
+      "name" : "Todo's App"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Todo's App.xcodeproj",
+        "identifier" : "730D6D302E048125007E5BB4",
+        "name" : "Todo's AppTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Todo's App.xcodeproj",
+        "identifier" : "730D6D3A2E048125007E5BB4",
+        "name" : "Todo's AppUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

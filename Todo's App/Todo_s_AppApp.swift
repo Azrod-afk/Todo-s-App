@@ -1,10 +1,3 @@
-//
-//  Todo_s_AppApp.swift
-//  Todo's App
-//
-//  Created by Loïc Peters on 19/06/2025.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -12,7 +5,8 @@ import SwiftData
 struct Todo_s_AppApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Item.self,
+            Todo.self,
+            TodoList.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

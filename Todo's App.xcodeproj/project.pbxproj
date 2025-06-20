@@ -27,6 +27,7 @@
 		730D6D202E048123007E5BB4 /* Todo's App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Todo's App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		730D6D312E048125007E5BB4 /* Todo's AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Todo's AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		730D6D3B2E048125007E5BB4 /* Todo's AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Todo's AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		73EC6D6D2E0494D300A44CC9 /* Todo's App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Todo's App.xctestplan"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -88,6 +89,7 @@
 		730D6D172E048123007E5BB4 = {
 			isa = PBXGroup;
 			children = (
+				73EC6D6D2E0494D300A44CC9 /* Todo's App.xctestplan */,
 				730D6D222E048123007E5BB4 /* Todo's App */,
 				730D6D342E048125007E5BB4 /* Todo's AppTests */,
 				730D6D3E2E048125007E5BB4 /* Todo's AppUITests */,

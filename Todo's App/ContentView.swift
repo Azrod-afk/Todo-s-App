@@ -1,43 +1,38 @@
-//
-//  ContentView.swift
-//  Todo's App
-//
-//  Created by Loïc Peters on 19/06/2025.
-//
-
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var todoLists: [TodoList]
 
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        if (todoLists.first?.items.isEmpty ?? true) {
+            addItem()
+        }
+        return NavigationSplitView {
+                ForEach(todoLists) { list in
+                    TodoListView(todoList: todoLists.first!)
+                }
+
+            #if os(macOS)
+                .navigationSplitViewColumnWidth(min: 180, ideal: 200)
+            #endif
+            .toolbar {
+
+                ToolbarItem(placement: .topBarLeading) {
+                    Button(action: {}) {
+                        Label("Test", systemImage: "chevron.left")
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-#if os(macOS)
-            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-#endif
-            .toolbar {
-#if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-#endif
-                ToolbarItem {
+
+                ToolbarSpacer()
+
+                ToolbarItemGroup {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+
             }
         } detail: {
             Text("Select an item")
@@ -45,22 +40,19 @@ struct ContentView: View {
     }
 
     private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
+        let newItem = Todo("Todo #" + String(((todoLists.first?.items.count ?? 0) + 1)))
+        if todoLists.isEmpty {
+            let todoList = TodoList(
+                name: "Aujourd'hui",
+                color: Color.red.description
+            )
+            modelContext.insert(todoList)
         }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+        todoLists.first?.addItem(newItem)
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: [Todo.self, TodoList.self], inMemory: true)
 }
